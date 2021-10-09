@@ -1,64 +1,64 @@
-# Mainīgie
+import getpass
 
-word = input('Ievadiet minamo vārdu: ').upper()
-progress = "-" * len(word)
-flag = False
-lives = 6
-try_letters = list()
-try_words = list()
+class Game:
+    def __init__(self, word):
+        self.word = word.upper()
+        self.progress = "-" * len(word)
+        self.lives = 6
+        self.flag = False
+        self.try_letters = list()
+        self.try_words = list()
+        self.progress = list(self.progress)
+        self.text_progress = ''.join(self.progress)
+        self.text = "Tev vēl ir {} dzīvības, progress: {}"
 
-text = "Tev vēl ir {} dzīvības, progress: {}"
+    def play(self):
+        while len(self.word) < 6:
+            print("Ievadītais vārds ir pārāk īss!")
+            self.word = getpass.getpass('Ievadiet minamo vārdu: ').upper()
+            self.progress = "-" * len(self.word)
+            self.progress = list(self.progress)
+            self.text_progress = ''.join(self.progress)
 
-# Spēles loģika
-
-while len(word) < 6:
-    print("Ievadītais vārds ir pārāk īss!")
-    word = input('Ievadiet minamo vārdu: ').upper()
-    progress = "-" * len(word)
-    progress = list(progress)
-    text_progress = ''.join(progress)
-
-while lives > 0 and flag == False:
-    progress = list(progress)
-    text_progress = ''.join(progress)
-    print("\n")
-    print(text.format(lives, text_progress))
-    letter = input("Ievadiet minamo burtu: ").upper()
-    if len(letter) == 1 and letter.isalpha():
-        print("Burts atbilst prasībām!")
-        if letter in word:
-            print("Burts atrodas minētajā vārdā!")
-            try_letters.append(letter)
-            for index, burts in enumerate (word):
-                if burts == letter:
-                    progress[index] = letter
-                    text_progress = ''.join(progress)
-                if "".join(progress) == word:
+        while self.lives > 0 and self.flag == False:
+            print("\n")
+            print(self.text.format(self.lives, self.text_progress))
+            letter = input("Ievadiet minamo burtu: ").upper()
+            if len(letter) == 1 and letter.isalpha():
+                print("Burts atbilst prasībām!")
+                if letter in self.word:
+                    print("Burts atrodas minētajā vārdā!")
+                    self.try_letters.append(letter)
+                    for index, burts in enumerate (self.word):
+                        if burts == letter:
+                            self.progress[index] = letter
+                            self.text_progress = ''.join(self.progress)
+                        if "".join(self.progress) == self.word:
+                            print("Vārds ir uzminēts!")
+                            print(self.word)
+                            self.flag = True
+                else:
+                    print("Burts neatrodas minētajā vārdā " + self.text_progress)
+                    self.lives = self.lives -1
+                    self.try_letters.append(letter)
+                    if self.lives == 0:
+                        print("Vārds nav uzminēts, spēle zaudēta!")
+            elif len(letter) == len(self.word) and letter.isalpha():
+                if letter == self.word:
                     print("Vārds ir uzminēts!")
-                    print(word)
-                    flag = True
-        else:
-            print("Burts neatrodas minētajā vārdā " + text_progress)
-            lives = lives -1
-            try_letters.append(letter)
-            if lives == 0:
-                print("Vārds nav uzminēts, spēle zaudēta!")
-    elif len(letter) == len(word) and letter.isalpha():
-        if letter == word:
-            print("Vārds ir uzminēts!")
-            print(word)
-            flag = True
-            break
-        elif letter != word:
-            for index, find_letter in enumerate (letter):
-                if word.find(find_letter) != -1:
-                    print("Vārds nav uzminēts, bet daži burti sakrīt")
+                    print(self.word)
+                    self.flag = True
                     break
-        elif letter != word:
-            print("Ievadītais vārds nesakrīt ar minamo vārdu!")
-            lives = lives -1
-    else:
-        print("Burts neatbilst prasībām!")
+                elif letter != self.word:
+                    for index, find_letter in enumerate (letter):
+                        if self.word.find(find_letter) != -1:
+                            print("Vārds nav uzminēts, bet daži burti sakrīt")
+                            break
+                elif letter != self.word:
+                    print("Ievadītais vārds nesakrīt ar minamo vārdu!")
+                    self.lives = self.lives -1
+            else:
+                print("Burts neatbilst prasībām!")
 
-
-     
+game1 = Game(getpass.getpass('Ievadiet minamo vārdu: '))
+game1.play()
