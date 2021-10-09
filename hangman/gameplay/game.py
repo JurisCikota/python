@@ -34,9 +34,9 @@ class Game:
                             self.progress[index] = letter
                             self.text_progress = ''.join(self.progress)
                         if "".join(self.progress) == self.word:
-                            print("Vārds ir uzminēts!")
-                            print(self.word)
-                            self.flag = True
+                           print("Vārds ir uzminēts!")
+                           print(self.word)
+                           self.flag = True
                 else:
                     print("Burts neatrodas minētajā vārdā " + self.text_progress)
                     self.lives = self.lives -1
@@ -59,6 +59,3 @@ class Game:
                     self.lives = self.lives -1
             else:
                 print("Burts neatbilst prasībām!")
-
-game1 = Game(getpass.getpass('Ievadiet minamo vārdu: '))
-game1.play()
