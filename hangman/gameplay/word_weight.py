@@ -22,3 +22,12 @@ letter_score =	{
 "f": 21,
 "h": 22
 }
+
+def translate(my_string):
+    my_string = my_string.lower()
+    lat = {"ā": "a", "č": "c", "ē": "e", "ģ": "g", "ī": "i", "ķ": "k", "ļ": "l", "ņ": "n", "š": "s", "ū": "u", "ž": "z"}
+    for k, v in lat.items():
+        my_string = my_string.replace(k, v)
+    print(my_string)
+
+translate("ŽžūĀ")
