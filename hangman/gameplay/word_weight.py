@@ -1,5 +1,8 @@
 import syllables
 
+#TODO
+# Izveidot Class
+
 def translate(my_string):
     my_string = my_string.lower()
     lat = {"ā": "a", "č": "c", "ē": "e", "ģ": "g", "ī": "i", "ķ": "k", "ļ": "l", "ņ": "n", "š": "s", "ū": "u", "ž": "z"}
