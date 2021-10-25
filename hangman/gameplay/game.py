@@ -1,5 +1,13 @@
 import getpass
 
+# TODO
+# 1) sākumā izvadīt cik burti ir minamajā vārdā
+# 2) ja vārds nav uzminēts, izvadīt beigās minamo vārdu
+# 3)* izvadīt zīmējumu karātavas! (ar progressu dzīvības)
+# 4) minamie burti: A == Ā, C == Č, utt.
+# 5) vai gribi spēli turpināt: yes/no
+
+
 class Game:
     def __init__(self, word):
         self.word = word.upper()
