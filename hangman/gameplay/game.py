@@ -1,15 +1,14 @@
-import getpass
+import os
+from .word_weight import Score
 
 # TODO
-# 1) sākumā izvadīt cik burti ir minamajā vārdā
-# 2) ja vārds nav uzminēts, izvadīt beigās minamo vārdu
-# 3)* izvadīt zīmējumu karātavas! (ar progressu dzīvības)
-# 4) minamie burti: A == Ā, C == Č, utt.
-# 5) vai gribi spēli turpināt: yes/no
+# 1) minamie burti: A == Ā, C == Č, utt. (Taisīt translate no klases, kas atrodas failā: word_weight)
+# 2) izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 
 
 class Game:
     def __init__(self, word):
+        self.original_word = word
         self.word = word.upper()
         self.progress = "-" * len(word)
         self.lives = 6
@@ -22,7 +21,8 @@ class Game:
         self.letter = ''
 
     def play(self):
-      #  self.word_length()
+        os.system('cls')
+        print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli!")
         while self.lives > 0 and self.flag == False:
             print("\n")
             print(self.text.format(self.lives, self.text_progress))
@@ -44,7 +44,6 @@ class Game:
                         if "".join(self.progress) == self.word:
                             print("Vārds ir uzminēts!")
                             self.try_words.append(self.word)
-                            #print(self.word)
                             self.flag = True
                             break
                 else:
@@ -54,13 +53,12 @@ class Game:
                     self.try_letters.append(self.letter)
                     print("Minētie burti: " + str(self.try_letters))
                     if self.lives == 0:
-                        print("Vārds nav uzminēts, spēle zaudēta!")
+                        print(f"Vārds <> {self.original_word} <> nav uzminēts, spēle zaudēta!")
 
             elif len(self.letter) == len(self.word) and self.letter.isalpha():
                 if self.letter == self.word:
                     print("Vārds ir uzminēts!")
                     self.try_words.append(self.word)
-                    #print(self.word)
                     self.flag = True
                     break
 
@@ -75,17 +73,3 @@ class Game:
 
             else:
                 print("Burts neatbilst prasībām!")
-
-
- #   def word_word(self):
-  #      if len(self.try_words) > 0:
-   #         print (self.try_words)
-
-
-#   def word_length(self):
-#        while len(self.word) < 6:
- #           print("Ievadītais vārds ir pārāk īss!")
- #           self.word = getpass.getpass('Ievadiet minamo vārdu: ').upper()
- #           self.progress = "-" * len(self.word)
- #           self.progress = list(self.progress)
-  #          self.text_progress = ''.join(self.progress)
