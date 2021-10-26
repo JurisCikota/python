@@ -5,14 +5,13 @@ class Score:
         self.word = word
 
     def translate(self):
-        self.word = self.word.lower()
+        word = self.word.lower()
         lat = {"ā": "a", "č": "c", "ē": "e", "ģ": "g", "ī": "i", "ķ": "k", "ļ": "l", "ņ": "n", "š": "s", "ū": "u", "ž": "z"}
         for k, v in lat.items():
-            self.word = self.word.replace(k, v)
-        return self.word
+            word = word.replace(k, v)
+        return word
 
     def letter_score(self):
-        self.word = self.word.lower()
         t = self.translate()
         score = 0
         letters = {"a": 1,"i": 2,"s": 3,"t": 4,"e": 5,"u": 6,"r": 7,"n": 8,"k": 9,"m": 10,"o": 11,"d": 12,"v": 13,"p": 14,"l": 15,"j": 16,"z": 17,"b": 18,"g": 19,"c": 20,"f": 21,"h": 22}
