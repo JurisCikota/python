@@ -1,5 +1,5 @@
 import os
-from .word_weight import Score
+from scripts.word_weight import Score
 
 # TODO
 # 1) minamie burti: A == Ā, C == Č, utt. (Taisīt translate no klases, kas atrodas failā: word_weight)
@@ -19,8 +19,10 @@ class Game:
         self.text_progress = ''.join(self.progress)
         self.text = "Tev vēl ir {} dzīvības, progress: {}"
         self.letter = ''
+        self.translate = Score(word)
 
     def play(self):
+        tr = self.translate.translate()
         os.system('cls')
         print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli!")
         while self.lives > 0 and self.flag == False:
@@ -31,7 +33,7 @@ class Game:
             if self.letter in self.try_letters:
                 print(f"Šādu burtu {self.letter} Tu jau minēji!" + " Esi uzmanīgāks")
             
-            elif len(self.letter) == 1 and self.letter.isalpha():
+            elif len(self.letter) == 1 and tr:
                 print("Burts atbilst prasībām!")
                 if self.letter in self.word:
                     print("Burts atrodas minētajā vārdā!")

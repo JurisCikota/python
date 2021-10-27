@@ -1,8 +1,15 @@
 from gameplay.game import Game
-import os #atlasīt tagadējo direktoriju
+import os
 import random
 
-with open('data/words.txt', 'r', encoding='utf-8') as file:
+#TODO
+# 1 import os atlasīt tagadējo direktoriju
+# 2 play again papildināt ar grūtību izvēlni!
+
+cur_dir = os.path.dirname(__file__)
+path = os.path.join(cur_dir, "data", 'words.txt')
+
+with open(path, 'r', encoding='utf-8') as file:
     lines = file.read()
     words = lines.split('\n')
 

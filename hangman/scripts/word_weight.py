@@ -1,8 +1,16 @@
 import syllables
+import pathlib
+import os
 
 class Score:
     def __init__(self, word):
         self.word = word
+
+        cur_dir = pathlib.Path(__file__).parent.absolute()
+        parent = cur_dir.parent
+        self.viegls = os.path.join(parent, "data", "easy_words.txt")
+        self.videjs = os.path.join(parent, "data", "medium_words.txt")
+        self.gruts = os.path.join(parent, "data", "hard_words.txt")
 
     def translate(self):
         word = self.word.lower()
@@ -45,4 +53,22 @@ class Score:
         u = self.unique_score()
         le = self.len_score()
         total_score = l + s + u + le
-        print(total_score)
+        return total_score
+
+    def save_words(self):
+        if self.total_score() < 100:
+            self.write_to_file(self.viegls)
+        elif self.total_score() >= 100 and self.total_score() <= 150:
+            self.write_to_file(self.videjs)
+        else:
+            self.write_to_file(self.gruts)
+        
+    def write_to_file(self, file):
+        if not os.path.exists(file):
+            with open(file, 'a', encoding='utf-8') as word_fails:
+                word_fails.write(self.word)
+                word_fails.close()
+        else:
+            with open(file, 'a', encoding='utf-8') as word_fails:
+                word_fails.write(f"\n{self.word}")
+                word_fails.close()
