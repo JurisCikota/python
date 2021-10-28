@@ -30,6 +30,8 @@ class Diffculty():
 
     def choose_difficulty(self):
         difficulty = input("\nChoose difficulty (type 1 ,2 ,3):\n 1 Easy\n 2 Normal\n 3 Hard\n")
+        while difficulty not in ["1", "2", "3"]:
+            difficulty = input("Error "*10 +"\n"+"please (type 1 ,2 ,3):\n 1 Easy\n 2 Normal\n 3 Hard\n")
         difficulty = int(difficulty)
         if difficulty == 1:
             with open(self.viegls, 'r', encoding='utf-8') as file:
@@ -45,5 +47,4 @@ class Diffculty():
             with open(self.gruts, 'r', encoding='utf-8') as file:
                 lines = file.read()
                 self.words = lines.split('\n')
-                return self.words
-    
+                return self.words    

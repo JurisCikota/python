@@ -4,9 +4,9 @@ import os
 import random
 
 os.system('cls')
-print('\n' + "_"*70)
+print('\n' + "_"*90)
 print("\n" + " "*30 + "Welcome to Hangman game!\n")
-print('\n' + "_"*70)
+print('\n' + "_"*90)
 difficulty = Diffculty()
 difficulty.file_exists()
 difficulty.write_files()
