@@ -2,8 +2,7 @@ import os
 from scripts.word_weight import Score
 
 # TODO
-# 1) minamie burti: A == Ā, C == Č, utt. (Taisīt translate no klases, kas atrodas failā: word_weight)
-# 2) izvadīt zīmējumu karātavas! (ar progressu dzīvības)
+# izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 
 
 class Game:
@@ -19,29 +18,31 @@ class Game:
         self.text_progress = ''.join(self.progress)
         self.text = "Tev vēl ir {} dzīvības, progress: {}"
         self.letter = ''
-        self.translate = Score(word)
 
     def play(self):
-        tr = self.translate.translate()
         os.system('cls')
+        translate = Score(self.word)
+        tr = translate.translate()
         print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli!")
         while self.lives > 0 and self.flag == False:
-            print("\n")
+            print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
             self.letter = input("Ievadiet minamo burtu: ").upper()
 
             if self.letter in self.try_letters:
                 print(f"Šādu burtu {self.letter} Tu jau minēji!" + " Esi uzmanīgāks")
             
-            elif len(self.letter) == 1 and tr:
+            elif len(self.letter) == 1 and self.letter.isalpha():
                 print("Burts atbilst prasībām!")
-                if self.letter in self.word:
+                if self.letter in str(tr).upper():
                     print("Burts atrodas minētajā vārdā!")
                     self.try_letters.append(self.letter)
                     print("Minētie burti: " + str(self.try_letters))
                     for index, burts in enumerate (self.word):
-                        if burts == self.letter:
-                            self.progress[index] = self.letter
+                        burts_translate = Score(burts)
+                        btr = burts_translate.translate()
+                        if str(btr).upper() == self.letter:
+                            self.progress[index] = burts
                             self.text_progress = ''.join(self.progress)
                         if "".join(self.progress) == self.word:
                             print("Vārds ir uzminēts!")
@@ -55,7 +56,7 @@ class Game:
                     self.try_letters.append(self.letter)
                     print("Minētie burti: " + str(self.try_letters))
                     if self.lives == 0:
-                        print(f"Vārds <> {self.original_word} <> nav uzminēts, spēle zaudēta!")
+                        print(f"\nVārds <> {self.original_word} <> nav uzminēts, spēle zaudēta!")
 
             elif len(self.letter) == len(self.word) and self.letter.isalpha():
                 if self.letter == self.word:

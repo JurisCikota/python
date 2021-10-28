@@ -1,17 +1,16 @@
 from gameplay.game import Game
+from scripts.split_difficulty import Diffculty
 import os
 import random
 
-#TODO
-# 1 import os atlasīt tagadējo direktoriju
-# 2 play again papildināt ar grūtību izvēlni!
-
-cur_dir = os.path.dirname(__file__)
-path = os.path.join(cur_dir, "data", 'words.txt')
-
-with open(path, 'r', encoding='utf-8') as file:
-    lines = file.read()
-    words = lines.split('\n')
+os.system('cls')
+print('\n' + "_"*70)
+print("\n" + " "*30 + "Welcome to Hangman game!\n")
+print('\n' + "_"*70)
+difficulty = Diffculty()
+difficulty.file_exists()
+difficulty.write_files()
+words = difficulty.choose_difficulty()
 
 random.shuffle(words)
 guessed_words = list()
@@ -35,3 +34,5 @@ while True:
     play_again = input("\nVai vēlies spēli turpināt? \nyes / no\n")
     if play_again not in ["yes", "ye", "y"]:
         break
+    else:
+        words = difficulty.choose_difficulty()
