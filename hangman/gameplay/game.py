@@ -4,9 +4,6 @@ from scripts.word_weight import Score
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # pulkstenis
-# increase level if word has been guessed
-# janis izmainas 11:18
-
 
 class Game:
     def __init__(self, word):
@@ -26,7 +23,12 @@ class Game:
         os.system('cls')
         translate = Score(self.word)
         tr = translate.translate()
-        print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli!")
+        if translate.total_score() < 100:
+            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli! Viegls vārds!")
+        elif translate.total_score() >= 100 and translate.total_score() <= 150:
+            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli! Vidēji grūts vārds!")
+        else:
+            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli! Grūts vārds!")
         while self.lives > 0 and self.flag == False:
             print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))

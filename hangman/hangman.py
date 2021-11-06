@@ -40,6 +40,36 @@ while True:
                 print_words = ', '.join(guessed_words)
                 n = n + 1
         print(f"\nGuessed word: {print_words}")
+        if game_viegls.lives != 0:
+            word_videjs = words_videjs.pop()
+            game_videjs = Game(word_videjs)
+            game_videjs.play()
+            if len(game_videjs.try_words) > 0:
+                guessed_words.append(''.join(game_videjs.try_words))
+                if len(guessed_words) > n:
+                    print_words = ', '.join(guessed_words)
+                    n = n + 1
+            print(f"\nGuessed word: {print_words}")
+            if game_videjs.lives != 0:
+                word_gruts = words_gruts.pop()
+                game_gruts = Game(word_gruts)
+                game_gruts.play()
+                if len(game_gruts.try_words) > 0:
+                    guessed_words.append(''.join(game_gruts.try_words))
+                    if len(guessed_words) > n:
+                        print_words = ', '.join(guessed_words)
+                        n = n + 1
+                print(f"\nGuessed word: {print_words}")
+            while game_gruts.lives != 0:
+                word_gruts = words_gruts.pop()
+                game_gruts = Game(word_gruts)
+                game_gruts.play()
+                if len(game_gruts.try_words) > 0:
+                    guessed_words.append(''.join(game_gruts.try_words))
+                    if len(guessed_words) > n:
+                        print_words = ', '.join(guessed_words)
+                        n = n + 1
+                print(f"\nGuessed word: {print_words}")
     if difficulty == 2:
         word_videjs = words_videjs.pop()
         game_videjs = Game(word_videjs)
@@ -50,6 +80,26 @@ while True:
                 print_words = ', '.join(guessed_words)
                 n = n + 1
         print(f"\nGuessed word: {print_words}")
+        if game_videjs.lives != 0:
+            word_gruts = words_gruts.pop()
+            game_gruts = Game(word_gruts)
+            game_gruts.play()
+            if len(game_gruts.try_words) > 0:
+                guessed_words.append(''.join(game_gruts.try_words))
+                if len(guessed_words) > n:
+                    print_words = ', '.join(guessed_words)
+                    n = n + 1
+            print(f"\nGuessed word: {print_words}")
+            while game_gruts.lives != 0:
+                word_gruts = words_gruts.pop()
+                game_gruts = Game(word_gruts)
+                game_gruts.play()
+                if len(game_gruts.try_words) > 0:
+                    guessed_words.append(''.join(game_gruts.try_words))
+                    if len(guessed_words) > n:
+                        print_words = ', '.join(guessed_words)
+                        n = n + 1
+                print(f"\nGuessed word: {print_words}")
     if difficulty == 3:
         word_gruts = words_gruts.pop()
         game_gruts = Game(word_gruts)
@@ -60,6 +110,16 @@ while True:
                 print_words = ', '.join(guessed_words)
                 n = n + 1
         print(f"\nGuessed word: {print_words}")
+        while game_gruts.lives != 0:
+            word_gruts = words_gruts.pop()
+            game_gruts = Game(word_gruts)
+            game_gruts.play()
+            if len(game_gruts.try_words) > 0:
+                guessed_words.append(''.join(game_gruts.try_words))
+                if len(guessed_words) > n:
+                    print_words = ', '.join(guessed_words)
+                    n = n + 1
+            print(f"\nGuessed word: {print_words}")
 
     print('\n' + "_"*70)
     play_again = input("\nVai vēlies spēli turpināt? \nyes / no\n")
