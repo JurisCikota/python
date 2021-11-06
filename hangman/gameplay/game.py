@@ -1,6 +1,6 @@
 import os
 from scripts.word_weight import Score
-
+from scripts.timer import timer
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # pulkstenis
@@ -32,8 +32,10 @@ class Game:
         while self.lives > 0 and self.flag == False:
             print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
+            laiks = timer()
+            laiks.time()
             self.letter = input("Ievadiet minamo burtu: ").upper()
-
+            
             if self.letter in self.try_letters:
                 print(f"Šādu burtu {self.letter} Tu jau minēji!" + " Esi uzmanīgāks")
             
