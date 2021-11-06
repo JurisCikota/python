@@ -4,6 +4,7 @@ from scripts.word_weight import Score
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # pulkstenis
+# increase level if word has been guessed
 
 
 class Game:
