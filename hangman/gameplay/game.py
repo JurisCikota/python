@@ -3,6 +3,7 @@ from scripts.word_weight import Score
 
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
+# Jura koment
 # pulkstenis
 # increase level if word has been guessed
 
