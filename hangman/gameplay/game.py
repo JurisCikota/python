@@ -5,6 +5,7 @@ from scripts.word_weight import Score
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # pulkstenis
 # increase level if word has been guessed
+# janis izmainas 11:18
 
 
 class Game:
