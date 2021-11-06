@@ -43,8 +43,8 @@ class Game:
         while self.lives > 0 and self.flag == False:
             print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
-            laiks = timer()
-            laiks.time()
+            #laiks = timer()
+            #laiks.time()
             GRleft.printGR(self.lives)
             self.letter = input("Ievadiet minamo burtu: ").upper()
             
