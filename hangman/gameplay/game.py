@@ -4,7 +4,8 @@ from scripts.word_weight import Score
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # hangman game progress (zimejums)061121
-# Jura komentārs
+# Jura koment
+
 
 
 class Game:
