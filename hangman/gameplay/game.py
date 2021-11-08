@@ -1,6 +1,7 @@
 import os
 from scripts.word_weight import Score
-from scripts.timer import timer
+import msvcrt
+import time
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # pulkstenis
@@ -27,7 +28,23 @@ class Game:
         self.text_progress = ''.join(self.progress)
         self.text = "Tev vēl ir {} dzīvības, progress: {}"
         self.letter = ''
-        
+    
+    def countdown(self):
+        self.a = ''
+        t = 20
+        print("Tev ir dotas 20 sekundes, lai uzminētu burtu!\nIevadiet minamo burtu!")
+        while t:
+            if msvcrt.kbhit():
+                self.a = msvcrt.getwch()
+                #self.a = "\n" + self.a + "\n"
+                break
+            print(f"{t}", end=' ', flush=True)
+            time.sleep(1)
+            t -= 1
+        if t == 0:
+            print("\nLaiks ir beidzies!")
+            self.lives = self.lives -1
+        return self.a
 
     def play(self):
         os.system('cls')
@@ -46,7 +63,11 @@ class Game:
             #laiks = timer()
             #laiks.time()
             GRleft.printGR(self.lives)
-            self.letter = input("Ievadiet minamo burtu: ").upper()
+            self.countdown()
+            if self.lives == 0:
+                GRleft.printGR(self.lives)
+            #self.letter = input("Ievadiet minamo burtu: ").upper()
+            self.letter = self.a.upper()
             
             if self.letter in self.try_letters:
                 print(f"Šādu burtu {self.letter} Tu jau minēji!" + " Esi uzmanīgāks")
