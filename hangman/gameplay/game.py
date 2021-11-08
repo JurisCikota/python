@@ -2,18 +2,7 @@ import os
 from scripts.word_weight import Score
 import msvcrt
 import time
-# TODO
-# izvadīt zīmējumu karātavas! (ar progressu dzīvības)
-# pulkstenis
 from gameplay.graphics import Graphics
-
-# TODO
-# izvadīt zīmējumu karātavas! (ar progressu dzīvības)
-# pulkstenis
-# increase level if word has been guessed
-# janis izmainas 11:18
-#  print self.lives = Graphics()
-#GRleft = Graphics(self.lives)
 
 class Game:
     def __init__(self, word):
@@ -36,7 +25,6 @@ class Game:
         while t:
             if msvcrt.kbhit():
                 self.a = msvcrt.getwch()
-                #self.a = "\n" + self.a + "\n"
                 break
             print(f"{t}", end=' ', flush=True)
             time.sleep(1)
@@ -60,13 +48,10 @@ class Game:
         while self.lives > 0 and self.flag == False:
             print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
-            #laiks = timer()
-            #laiks.time()
             GRleft.printGR(self.lives)
             self.countdown()
             if self.lives == 0:
                 GRleft.printGR(self.lives)
-            #self.letter = input("Ievadiet minamo burtu: ").upper()
             self.letter = self.a.upper()
             
             if self.letter in self.try_letters:
@@ -93,7 +78,6 @@ class Game:
                     
                     print("Burts neatrodas minētajā vārdā")
                     self.lives = self.lives -1
-          #         print self.lives = Graphics()
                     self.try_letters.append(self.letter)
                     print("Minētie burti: " + str(self.try_letters))
                     if self.lives == 0:
