@@ -20,22 +20,23 @@ class Game:
     
     def countdown(self):
         self.a = ''
-        t = 20
+        self.t = 20
         print("Tev ir dotas 20 sekundes, lai uzminētu burtu!\nIevadiet minamo burtu!")
-        while t:
+        while self.t:
             if msvcrt.kbhit():
                 self.a = msvcrt.getwch()
                 break
-            print(f"{t}", end=' ', flush=True)
+            print(f"{self.t}", end=' ', flush=True)
             time.sleep(1)
-            t -= 1
-        if t == 0:
+            self.t -= 1
+        if self.t == 0:
             print("\nLaiks ir beidzies!")
             self.lives = self.lives -1
+        os.system('cls')
         return self.a
+        
 
     def play(self):
-        os.system('cls')
         GRleft = Graphics()
         translate = Score(self.word)
         tr = translate.translate()
@@ -56,7 +57,10 @@ class Game:
             
             if self.letter in self.try_letters:
                 print(f"Šādu burtu {self.letter} Tu jau minēji!" + " Esi uzmanīgāks")
-            
+                print("Minētie burti: " + str(self.try_letters))
+            elif self.letter == '':
+                print(f"\nLaiks ir beidzies! Mēģini iekļauties 20 sekunžu minēšanas laikā!")
+                print("Minētie burti: " + str(self.try_letters))
             elif len(self.letter) == 1 and self.letter.isalpha():
                 print("Burts atbilst prasībām!")
                 if self.letter in str(tr).upper():
