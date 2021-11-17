@@ -30,17 +30,29 @@ class Diffculty():
 
     def generate_difficulty(self, level):
         if level == "viegls":
-            with open(self.viegls, 'r', encoding='utf-8') as file:
-                lines = file.read()
-                self.words = lines.split('\n')
-                return self.words
+            try:
+                with open(self.viegls, 'r', encoding='utf-8') as file:
+                    lines = file.read()
+                    self.words = lines.split('\n')
+                    return self.words
+            except FileNotFoundError:
+                print("\n"+ "-"*70 +"\nFails neeksistē!\n"+ "-"*70 +"\n")
+                raise
         if level == "videjs":
-            with open(self.videjs, 'r', encoding='utf-8') as file:
-                lines = file.read()
-                self.words = lines.split('\n')
-                return self.words
+            try:
+                with open(self.videjs, 'r', encoding='utf-8') as file:
+                    lines = file.read()
+                    self.words = lines.split('\n')
+                    return self.words
+            except FileNotFoundError:
+                print("\n"+ "-"*70 +"\nFails neeksistē!\n"+ "-"*70 +"\n")
+                raise
         if level == "gruts":
-            with open(self.gruts, 'r', encoding='utf-8') as file:
-                lines = file.read()
-                self.words = lines.split('\n')
-                return self.words
+            try:
+                with open(self.gruts, 'r', encoding='utf-8') as file:
+                    lines = file.read()
+                    self.words = lines.split('\n')
+                    return self.words
+            except FileNotFoundError:
+                print("\n"+ "-"*70 +"\nFails neeksistē!\n"+ "-"*70 +"\n")
+                raise

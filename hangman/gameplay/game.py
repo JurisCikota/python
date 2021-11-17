@@ -4,16 +4,22 @@ from scripts.timer import timer
 # TODO
 # izvadīt zīmējumu karātavas! (ar progressu dzīvības)
 # pulkstenis
+from gameplay.graphics import Graphics
+
+# TODO
+# izvadīt zīmējumu karātavas! (ar progressu dzīvības)
+# pulkstenis
 # increase level if word has been guessed
 # janis izmainas 11:18
-
+#  print self.lives = Graphics()
+#GRleft = Graphics(self.lives)
 
 class Game:
     def __init__(self, word):
         self.original_word = word
         self.word = word.upper()
         self.progress = "-" * len(word)
-        self.lives = 6
+        self.lives = 6 
         self.flag = False
         self.try_letters = list()
         self.try_words = list()
@@ -21,17 +27,25 @@ class Game:
         self.text_progress = ''.join(self.progress)
         self.text = "Tev vēl ir {} dzīvības, progress: {}"
         self.letter = ''
+        
 
     def play(self):
         os.system('cls')
+        GRleft = Graphics()
         translate = Score(self.word)
         tr = translate.translate()
-        print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli!")
+        if translate.total_score() < 100:
+            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli! Viegls vārds!")
+        elif translate.total_score() >= 100 and translate.total_score() <= 150:
+            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli! Vidēji grūts vārds!")
+        else:
+            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)} simboli! Grūts vārds!")
         while self.lives > 0 and self.flag == False:
             print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
-            laiks = timer()
-            laiks.time()
+            #laiks = timer()
+            #laiks.time()
+            GRleft.printGR(self.lives)
             self.letter = input("Ievadiet minamo burtu: ").upper()
             
             if self.letter in self.try_letters:
@@ -58,9 +72,11 @@ class Game:
                     
                     print("Burts neatrodas minētajā vārdā")
                     self.lives = self.lives -1
+          #         print self.lives = Graphics()
                     self.try_letters.append(self.letter)
                     print("Minētie burti: " + str(self.try_letters))
                     if self.lives == 0:
+                        GRleft.printGR(self.lives)
                         print(f"\nVārds <> {self.original_word} <> nav uzminēts, spēle zaudēta!")
 
             elif len(self.letter) == len(self.word) and self.letter.isalpha():
@@ -80,4 +96,5 @@ class Game:
                     self.lives = self.lives -1
 
             else:
-                print("Burts neatbilst prasībām!")
+                print("Burts neatbilst prasībām!")  
+   
