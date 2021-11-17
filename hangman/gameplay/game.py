@@ -5,6 +5,17 @@ import time
 from gameplay.graphics import Graphics
 
 class Game:
+    """Main game class, use to execute game.
+
+    Create class using one word as atribute, this word will be needed to guess.
+    To play game need to execute play() function!
+
+    Typical usage example:
+
+    game1 = Game(word)
+    game1.play()
+    """
+
     def __init__(self, word):
         self.original_word = word
         self.word = word.upper()
@@ -23,7 +34,7 @@ class Game:
         self.t = 20
         print("Tev ir dotas 20 sekundes, lai uzminētu burtu!\nIevadiet minamo burtu!")
         while self.t:
-            if msvcrt.kbhit():
+            if msvcrt.kbhit(): #msvcrt - MS VC++ runtime
                 self.a = msvcrt.getwch()
                 break
             print(f"{self.t}", end=' ', flush=True)
@@ -34,6 +45,15 @@ class Game:
             self.lives = self.lives -1
         os.system('cls')
         return self.a
+
+    """Prints out countdown.
+
+    Print out countdown. countdown can be interupted with keyboard key press,
+    when this behaviour happens it reads what key has been pressed.
+
+    Returns:
+        keyboard pressed key in unicode format
+    """
         
 
     def play(self):
