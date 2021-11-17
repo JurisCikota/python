@@ -1,20 +1,5 @@
 import os
 from scripts.word_weight import Score
-<<<<<<< HEAD
-from scripts.timer import timer
-# TODO
-# izvadīt zīmējumu karātavas! (ar progressu dzīvības)
-# pulkstenis
-from gameplay.graphics import Graphics
-
-# TODO
-# izvadīt zīmējumu karātavas! (ar progressu dzīvības)
-# pulkstenis
-# increase level if word has been guessed
-# janis izmainas 11:18
-#  print self.lives = Graphics()
-#GRleft = Graphics(self.lives)
-=======
 import msvcrt
 import time
 from gameplay.graphics import Graphics
@@ -30,7 +15,6 @@ class Game:
     game1 = Game(word)
     game1.play()
     """
->>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
 
     def __init__(self, word):
         self.original_word = word
@@ -44,12 +28,6 @@ class Game:
         self.text_progress = ''.join(self.progress)
         self.text = "Tev vēl ir {} dzīvības, progress: {}"
         self.letter = ''
-<<<<<<< HEAD
-        
-
-    def play(self):
-        os.system('cls')
-=======
     
     def countdown(self):
         self.a = ''
@@ -79,7 +57,6 @@ class Game:
         
 
     def play(self):
->>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
         GRleft = Graphics()
         translate = Score(self.word)
         tr = translate.translate()
@@ -92,18 +69,11 @@ class Game:
         while self.lives > 0 and self.flag == False:
             print('\n' + "_"*70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
-<<<<<<< HEAD
-            #laiks = timer()
-            #laiks.time()
-            GRleft.printGR(self.lives)
-            self.letter = input("Ievadiet minamo burtu: ").upper()
-=======
             GRleft.printGR(self.lives)
             self.countdown()
             if self.lives == 0:
                 GRleft.printGR(self.lives)
             self.letter = self.a.upper()
->>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
             
             if self.letter in self.try_letters:
                 print(f"Šādu burtu {self.letter} Tu jau minēji!" + " Esi uzmanīgāks")

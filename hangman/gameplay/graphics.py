@@ -3,8 +3,6 @@
 
 
 class Graphics:
-<<<<<<< HEAD
-=======
     """Output stylish graph
 
     prints out progress in graph based on lives
@@ -16,7 +14,6 @@ class Graphics:
     graph.printGR(lives)
     """
 
->>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
     def __init__(self):
         self.lives = 6
 
