@@ -30,6 +30,8 @@ while True:
         difficulty = input("Error "*10 +"\n"+"please (type 1 ,2 ,3):\n 1 Easy\n 2 Normal\n 3 Hard\n")
     difficulty = int(difficulty)
 
+    os.system('cls')
+
     if difficulty == 1:
         try:
             word_viegls = words_viegls.pop()
@@ -72,6 +74,7 @@ while True:
                         print_words = ', '.join(guessed_words)
                         n = n + 1
                 print(f"\nGuessed word: {print_words}")
+<<<<<<< HEAD
             while game_gruts.lives != 0:
                 try:
                     word_gruts = words_gruts.pop()
@@ -86,6 +89,22 @@ while True:
                         print_words = ', '.join(guessed_words)
                         n = n + 1
                 print(f"\nGuessed word: {print_words}")
+=======
+                while game_gruts.lives != 0:
+                    try:
+                        word_gruts = words_gruts.pop()
+                    except IndexError:
+                        print("\n"+ "-"*70 +"\nIzvēlētajā grūtības failā ir beigušies vārdi!\n"+ "-"*70 +"\n")
+                        raise
+                    game_gruts = Game(word_gruts)
+                    game_gruts.play()
+                    if len(game_gruts.try_words) > 0:
+                        guessed_words.append(''.join(game_gruts.try_words))
+                        if len(guessed_words) > n:
+                            print_words = ', '.join(guessed_words)
+                            n = n + 1
+                    print(f"\nGuessed word: {print_words}")
+>>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
     if difficulty == 2:
         try:
             word_videjs = words_videjs.pop()
@@ -113,6 +132,7 @@ while True:
                 if len(guessed_words) > n:
                     print_words = ', '.join(guessed_words)
                     n = n + 1
+<<<<<<< HEAD
             print(f"\nGuessed word: {print_words}")
             while game_gruts.lives != 0:
                 try:
@@ -128,6 +148,23 @@ while True:
                         print_words = ', '.join(guessed_words)
                         n = n + 1
                 print(f"\nGuessed word: {print_words}")
+=======
+                print(f"\nGuessed word: {print_words}")
+                while game_gruts.lives != 0:
+                    try:
+                        word_gruts = words_gruts.pop()
+                    except IndexError:
+                        print("\n"+ "-"*70 +"\nIzvēlētajā grūtības failā ir beigušies vārdi!\n"+ "-"*70 +"\n")
+                        raise
+                    game_gruts = Game(word_gruts)
+                    game_gruts.play()
+                    if len(game_gruts.try_words) > 0:
+                        guessed_words.append(''.join(game_gruts.try_words))
+                        if len(guessed_words) > n:
+                            print_words = ', '.join(guessed_words)
+                            n = n + 1
+                    print(f"\nGuessed word: {print_words}")
+>>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
     if difficulty == 3:
         try:
             word_gruts = words_gruts.pop()
@@ -141,6 +178,7 @@ while True:
             if len(guessed_words) > n:
                 print_words = ', '.join(guessed_words)
                 n = n + 1
+<<<<<<< HEAD
         print(f"\nGuessed word: {print_words}")
         while game_gruts.lives != 0:
             try:
@@ -156,6 +194,23 @@ while True:
                     print_words = ', '.join(guessed_words)
                     n = n + 1
             print(f"\nGuessed word: {print_words}")
+=======
+            print(f"\nGuessed word: {print_words}")
+            while game_gruts.lives != 0:
+                try:
+                    word_gruts = words_gruts.pop()
+                except IndexError:
+                    print("\n"+ "-"*70 +"\nIzvēlētajā grūtības failā ir beigušies vārdi!\n"+ "-"*70 +"\n")
+                    raise
+                game_gruts = Game(word_gruts)
+                game_gruts.play()
+                if len(game_gruts.try_words) > 0:
+                    guessed_words.append(''.join(game_gruts.try_words))
+                    if len(guessed_words) > n:
+                        print_words = ', '.join(guessed_words)
+                        n = n + 1
+                print(f"\nGuessed word: {print_words}")
+>>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
 
     print('\n' + "_"*70)
     play_again = input("\nVai vēlies spēli turpināt? \nyes / no\n")
