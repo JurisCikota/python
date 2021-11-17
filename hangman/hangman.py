@@ -1,7 +1,7 @@
 from gameplay.game import Game
 from scripts.split_difficulty import Diffculty
 import os
-import random
+import random 
 
 os.system('cls')
 print('\n' + "_"*90)
