@@ -3,6 +3,20 @@
 
 
 class Graphics:
+<<<<<<< HEAD
+=======
+    """Output stylish graph
+
+    prints out progress in graph based on lives
+    printGR function takes integer atribute from 1 to 6 and prints out graphic.
+
+    Typical usage example:
+
+    graph = Graphics()
+    graph.printGR(lives)
+    """
+
+>>>>>>> e343c4154a761d5b0b295d800001ec1064f59c2e
     def __init__(self):
         self.lives = 6
 

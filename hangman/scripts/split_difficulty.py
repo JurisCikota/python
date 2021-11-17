@@ -3,6 +3,16 @@ import pathlib
 import os
 
 class Diffculty():
+    """Create dificulty files from origin file.
+
+    Takes origin file and create three difficulty files using Score class.
+    level as viegls or videjs or gruts.
+    Difficulty class opens these difficulty files and reads file content.
+
+    dfclty = Diffculty()
+    dfclty.generate_difficulty(level)
+    """
+
     def __init__(self):
         self.cur_dir = pathlib.Path(__file__).parent.absolute()
         self.parent = self.cur_dir.parent
@@ -12,6 +22,9 @@ class Diffculty():
         self.words = list()
 
     def file_exists(self):
+        """Check if file exists.
+        If file exists it removes existing file
+        """
         if os.path.exists(self.viegls):
             os.remove(self.viegls)
         if os.path.exists(self.videjs):
@@ -20,7 +33,9 @@ class Diffculty():
             os.remove(self.gruts)
 
 
-    def write_files(self):    
+    def write_files(self):
+        """Opens origin file and calls Score class to calculate word difficulty and saves it to file.
+        """   
         path = os.path.join(self.parent, "data", 'words.txt')
         with open(path, 'r', encoding='utf-8') as file:
             li = file.read().split("\n")
@@ -29,6 +44,18 @@ class Diffculty():
                 split.save_words()
 
     def generate_difficulty(self, level):
+        """Function used to return word based on difficulty.
+
+        Args:
+            take level argument
+            level can only be: viegls, videjs, gruts
+
+        Returns:
+            chosen difficulty word
+
+        Raises:
+            FileNotFoundError
+        """
         if level == "viegls":
             try:
                 with open(self.viegls, 'r', encoding='utf-8') as file:
