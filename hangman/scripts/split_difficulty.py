@@ -2,12 +2,15 @@ from scripts.word_weight import Score
 import pathlib
 import os
 
+
 class Diffculty():
     """Create dificulty files from origin file.
 
-    Takes origin file and create three difficulty files using Score class.
+    Takes origin file and create three difficulty files
+    using Score class.
     level as viegls or videjs or gruts.
-    Difficulty class opens these difficulty files and reads file content.
+    Difficulty class opens these difficulty files
+    and reads file content.
 
     dfclty = Diffculty()
     dfclty.generate_difficulty(level)
@@ -32,10 +35,10 @@ class Diffculty():
         if os.path.exists(self.gruts):
             os.remove(self.gruts)
 
-
     def write_files(self):
-        """Opens origin file and calls Score class to calculate word difficulty and saves it to file.
-        """   
+        """Opens origin file and calls Score class
+        to calculate word difficulty and saves it to file.
+        """
         path = os.path.join(self.parent, "data", 'words.txt')
         with open(path, 'r', encoding='utf-8') as file:
             li = file.read().split("\n")
@@ -63,7 +66,8 @@ class Diffculty():
                     self.words = lines.split('\n')
                     return self.words
             except FileNotFoundError:
-                print("\n"+ "-"*70 +"\nFails neeksistē!\n"+ "-"*70 +"\n")
+                print("\n" + "-" * 70
+                      + "\nFails neeksistē!\n" + "-" * 70 + "\n")
                 raise
         if level == "videjs":
             try:
@@ -72,7 +76,8 @@ class Diffculty():
                     self.words = lines.split('\n')
                     return self.words
             except FileNotFoundError:
-                print("\n"+ "-"*70 +"\nFails neeksistē!\n"+ "-"*70 +"\n")
+                print("\n" + "-" * 70
+                      + "\nFails neeksistē!\n" + "-" * 70 + "\n")
                 raise
         if level == "gruts":
             try:
@@ -81,5 +86,6 @@ class Diffculty():
                     self.words = lines.split('\n')
                     return self.words
             except FileNotFoundError:
-                print("\n"+ "-"*70 +"\nFails neeksistē!\n"+ "-"*70 +"\n")
+                print("\n" + "-" * 70
+                      + "\nFails neeksistē!\n" + "-" * 70 + "\n")
                 raise

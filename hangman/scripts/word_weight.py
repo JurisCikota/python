@@ -2,6 +2,7 @@ import syllables
 import pathlib
 import os
 
+
 class Score:
     def __init__(self, word):
         self.word = word
@@ -13,13 +14,24 @@ class Score:
         self.gruts = os.path.join(parent, "data", "hard_words.txt")
 
     def translate(self):
-        """Converts latvian letters with macron and cedilla to regular letter
+        """Converts latvian letters with macron
+        and cedilla to regular letter
 
         Returns:
             converted letter in lower case
         """
         word = self.word.lower()
-        lat = {"ā": "a", "č": "c", "ē": "e", "ģ": "g", "ī": "i", "ķ": "k", "ļ": "l", "ņ": "n", "š": "s", "ū": "u", "ž": "z"}
+        lat = {"ā": "a",
+               "č": "c",
+               "ē": "e",
+               "ģ": "g",
+               "ī": "i",
+               "ķ": "k",
+               "ļ": "l",
+               "ņ": "n",
+               "š": "s",
+               "ū": "u",
+               "ž": "z"}
         for k, v in lat.items():
             word = word.replace(k, v)
         return word
@@ -34,13 +46,33 @@ class Score:
         """
         t = self.translate()
         score = 0
-        letters = {"a": 1,"i": 2,"s": 3,"t": 4,"e": 5,"u": 6,"r": 7,"n": 8,"k": 9,"m": 10,"o": 11,"d": 12,"v": 13,"p": 14,"l": 15,"j": 16,"z": 17,"b": 18,"g": 19,"c": 20,"f": 21,"h": 22}
+        letters = {"a": 1,
+                   "i": 2,
+                   "s": 3,
+                   "t": 4,
+                   "e": 5,
+                   "u": 6,
+                   "r": 7,
+                   "n": 8,
+                   "k": 9,
+                   "m": 10,
+                   "o": 11,
+                   "d": 12,
+                   "v": 13,
+                   "p": 14,
+                   "l": 15,
+                   "j": 16,
+                   "z": 17,
+                   "b": 18,
+                   "g": 19,
+                   "c": 20,
+                   "f": 21,
+                   "h": 22}
         for k, v in letters.items():
             for letter in t:
                 if letter == k:
                     score = score + v
         return score
- 
 
     def syllables_score(self):
         """Calculate estimate sylalbles in word
@@ -72,14 +104,17 @@ class Score:
             INTEGER word length
         """
         t = self.translate()
-        len_score  = len(t)
+        len_score = len(t)
         return len_score
 
     def total_score(self):
         """Calculate total score of word difficulty
 
         Returns:
-            INTEGER sum of letter_score, syllables_score, unique_score, len_score functions
+            INTEGER sum of letter_score,
+            syllables_score,
+            unique_score,
+            len_score functions
         """
         l = self.letter_score()
         s = self.syllables_score()
@@ -97,9 +132,10 @@ class Score:
             self.write_to_file(self.videjs)
         else:
             self.write_to_file(self.gruts)
-        
+
     def write_to_file(self, file):
-        """write file function so every word ends with new line except last
+        """write file function so every word
+        ends with new line except last
         """
         if not os.path.exists(file):
             with open(file, 'a', encoding='utf-8') as word_fails:
