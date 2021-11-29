@@ -69,11 +69,11 @@ class Game:
                    + " simboli! Viegls vārds!")
         elif translate.total_score() >= 100 \
                 and translate.total_score() <= 150:
-            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)}"
-                   + " simboli! Vidēji grūts vārds!")
+            print(f"\nTev jāuzmin vārds, kura garums ir {len(self.word)}"
+                  + " simboli! Vidēji grūts vārds!")
         else:
-            print (f"\nTev jāuzmin vārds, kura garums ir {len(self.word)}"
-                   + " simboli! Grūts vārds!")
+            print(f"\nTev jāuzmin vārds, kura garums ir {len(self.word)}"
+                  + " simboli! Grūts vārds!")
         while self.lives > 0 and self.flag == False:
             print('\n' + "_" * 70 + "\n")
             print(self.text.format(self.lives, self.text_progress))
@@ -128,7 +128,7 @@ class Game:
                     break
 
                 elif self.letter != self.word:
-                    for index, find_letter in enumerate (self.letter):
+                    for index, find_letter in enumerate(self.letter):
                         if self.word.find(find_letter) != -1:
                             print("Vārds nav uzminēts,"
                                   + " bet daži burti sakrīt")
