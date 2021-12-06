@@ -4,6 +4,8 @@ import os
 
 
 class Score:
+
+    
     def __init__(self, word):
         self.word = word
 

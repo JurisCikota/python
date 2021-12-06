@@ -28,17 +28,17 @@ while True:
     n = 0
 
     difficulty = input("\nChoose difficulty (type 1 ,2 ,3, 4):"
-                       + "\n 1 Easy"
-                       + "\n 2 Normal"
-                       + "\n 3 Hard"
-                       + "\n 4 Random English word\n")
+                       + "\n 1 Easy   - Latvian word from words.txt"
+                       + "\n 2 Normal - Latvian word from words.txt"
+                       + "\n 3 Hard   - Latvian word from words.txt"
+                       + "\n 4 Random - English word from random-word-api\n")
     while difficulty not in ["1", "2", "3", "4"]:
         difficulty = input("Error " * 10 + "\n"
                            +"please (type 1 ,2 ,3, 4):"
-                           + "\n 1 Easy"
-                           + "\n 2 Normal"
-                           + "\n 3 Hard"
-                           + "\n 4 Random English word\n")
+                           + "\n 1 Easy   - Latvian word from words.txt"
+                           + "\n 2 Normal - Latvian word from words.txt"
+                           + "\n 3 Hard   - Latvian word from words.txt"
+                           + "\n 4 Random - English word from random-word-api\n")
     difficulty = int(difficulty)
 
     os.system('cls')
